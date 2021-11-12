@@ -8,7 +8,6 @@ import SongDetails from "./components/SongDetails";
 import Signup from "./components/Signup";
 import { useState } from 'react'
 import Login from "./components/Login";
-import { useHistory } from "react-router";
 import MySongs from "./components/MySongs";
 import EditSong from "./components/EditSong";
 import { Link } from "react-router-dom";
@@ -17,7 +16,6 @@ import { Link } from "react-router-dom";
 function App(props) {
   const [search, setSearch] = useState(props.search);
   const [user, setUser] = useState(props.user)
-  const history = useHistory()
   const addUser = user => {
     setUser(user);
   }

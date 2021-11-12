@@ -12,12 +12,13 @@ function AddSong(props) {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [songUrl, setSongUrl] = useState('');
-  const [createdBy, setCreatedBy] = useState(loggedInUser)
+  const [createdBy,] = useState(loggedInUser)
   const [tag, setTag] = useState('')
   const [tags, setTags] = useState([])
   const [tagToRemove, setTagToRemove] = useState(null)
   const [uploadStage, setUploadStage] = useState(0)
   const [message, setMessage] = useState(null)
+
 
   // ******** this method handles just the file upload ********
   const handleFileUpload = e => {
@@ -114,10 +115,10 @@ function AddSong(props) {
         <input type="text" name="title" value={title} onChange={e => setTitle(e.target.value)} placeholder='Title' />
 
         {/* <label>Author</label> */}
-        <input className='bottomMargin'type="text" name="author" value={author} onChange={e => setAuthor(e.target.value)} placeholder='Author' />
+        <input className='bottomMargin' type="text" name="author" value={author} onChange={e => setAuthor(e.target.value)} placeholder='Author' />
         <div>
           <label className='fileUpload'>
-          Choose a file
+            Choose a file
             <input type="file" onChange={handleFileUpload} />
           </label>
           <div>{uploadStage > 1 ? saveButton : uploadStage > 0 ? loadIcon : waitingIcon}</div>
@@ -135,14 +136,14 @@ function AddSong(props) {
 
       {message && <p>{message}</p>}
       <div className='tagsBox'>
-      {tags.map(tag =>
-        <>
-          <p>{tag}</p>
-          <form onSubmit={handleDeleteTag} >
-            <button name='tagButton' type="submit" value={tag} >x</button>
-          </form>
-        </>
-      )}
+        {tags.map(tag =>
+          <>
+            <p>{tag}</p>
+            <form onSubmit={handleDeleteTag} >
+              <button name='tagButton' type="submit" value={tag} >x</button>
+            </form>
+          </>
+        )}
       </div>
     </div>
   );

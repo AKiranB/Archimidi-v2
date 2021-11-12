@@ -9,14 +9,14 @@ import SongCard from "./SongCard";
 function SongsList(props) {
 
   const [allSongs, setAllSongs] = useState([]);
-  const {search, setSearch} = props;
+  const { search, setSearch } = props;
   const [searchFields, setSearchFields] = useState({ title: true, author: true, tags: false })
 
   const getAllSongs = () => {
     return service
       .findAllSongs()
       .then(response => {
-        // console.log("response is: ", response);
+        console.log("response is: ", response);
         setAllSongs(response)
       })
       .catch(err => console.log('Error while uploading the file: ', err));
