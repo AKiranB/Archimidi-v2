@@ -1,5 +1,6 @@
 // ℹ️ Gets access to environment variables/settings
 // https://www.npmjs.com/package/dotenv
+cors = require('cors')
 require("dotenv/config");
 
 // ℹ️ Connects to the database
@@ -20,6 +21,8 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const DB_URL = process.env.MONGODB_URI
 
+
+
 app.use(
     session({
         secret: process.env.SESSION_SECRET,
@@ -31,34 +34,34 @@ app.use(
             mongoUrl: DB_URL
         })
     })
-    )
-    
-    
-    
-    // 👇 Start handling routes here
-    // Contrary to the views version, all routes are controlled from the routes/index.js
-    const allRoutes = require("./routes");
-    app.use("/api", allRoutes);
-    
-    // app.js
-    
-    //  Start handling routes here
-    const index = require('./routes/index'); // <== already included
-    app.use('/', index); // <== already included
-    
-    const songRouter = require('./routes/midiSong'); // <== has to be added
-    app.use('/api', songRouter); // <== has to be added
-    
-    const auth = require('./routes/auth');
-    app.use('/api/auth', auth)
-    
-    
-    app.use((req, res) => {
-        // If no routes match, send them the React HTML.
-        res.sendFile(__dirname + "/client/build/index.html");
-    });
-    
-    // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
-    require("./error-handling")(app);
-    
+)
+
+
+
+// 👇 Start handling routes here
+// Contrary to the views version, all routes are controlled from the routes/index.js
+const allRoutes = require("./routes");
+app.use("/api", allRoutes);
+
+// app.js
+
+//  Start handling routes here
+const index = require('./routes/index'); // <== already included
+app.use('/', index); // <== already included
+
+const songRouter = require('./routes/midiSong'); // <== has to be added
+app.use('/api', songRouter); // <== has to be added
+
+const auth = require('./routes/auth');
+app.use('/api/auth', auth)
+
+
+app.use((req, res) => {
+    // If no routes match, send them the React HTML.
+    res.sendFile(__dirname + "/client/build/index.html");
+});
+
+// ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
+require("./error-handling")(app);
+
 module.exports = app;

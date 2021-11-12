@@ -73,7 +73,7 @@ router.put('/:id', (req, res, next) => {
 router.delete('/:id', (req, res) => {
   MidiSong.findByIdAndDelete(req.params.id)
     .then(() => {
-      ////
+      ////maybe try delete
       fileUploader.destroy(`${req.params.id}`, function (error, result) {
         console.log(result, error)
       });

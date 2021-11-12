@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React from 'react'
 
-export default function SongCard({ title, _id, songUrl, author, tags }) {
+export default function SongCard({ title, _id, songUrl, author, tags, likes }) {
 
 
     return (
@@ -10,9 +10,12 @@ export default function SongCard({ title, _id, songUrl, author, tags }) {
                 <h3>{title}</h3>
                 <h4>{author}</h4>
             </Link>
-                <div className='tagsBox'>
+            <div className='tagsBox'>
                 {tags && tags.map(tag => <p>{tag}</p>)}
-                </div>
+            </div>
+            <div>
+                {likes} likes
+            </div>
             <a href={songUrl} download={`${title}_${author}.mid`}>Download</a>
         </div>
     )

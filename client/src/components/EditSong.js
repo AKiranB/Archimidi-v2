@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import service from '../api/service';
 import axios from 'axios'
 
 export default function EditSong(props) {
@@ -41,7 +40,9 @@ export default function EditSong(props) {
         <div className='secondaryContainer'>
             <h3>Edit song</h3>
             <form onSubmit={handleSubmit} className='baseForm'>
-                <label htmlFor="title">Title: </label>
+                <label htmlFor="title">
+                    Title:
+                </label>
                 <input
                     type="text"
                     name="title"
