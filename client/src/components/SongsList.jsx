@@ -79,6 +79,7 @@ function SongsList(props) {
 
     <label>
       This is a test
+      another test
       <input
         name="title"
         type="checkbox"
