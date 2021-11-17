@@ -15,7 +15,6 @@ router.post('/login', (req, res, next) => {
                 //we haven't found a user, you have entered the wrong information
                 res.status(400).json({ message: 'Incorrect username or password' })
             }
-
             //if we get to this point, the username is correct
             //we then check the password from the user input against the hash in the database
             //compareSync returns a bool, true/false
