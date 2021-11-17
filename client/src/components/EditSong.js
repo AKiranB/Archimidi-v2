@@ -43,7 +43,7 @@ export default function EditSong(props) {
                 <label htmlFor="title">
                     Title:
                 </label>
-                <input
+                <input  
                     type="text"
                     name="title"
                     value={title}

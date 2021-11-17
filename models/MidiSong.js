@@ -11,7 +11,8 @@ const MidiSong = new Schema(
     createdBy: String,
     genre: String,
     tags: Array,
-    likes: { type: Number, default: 0 }
+    likes: { type: Number, default: 0 },
+    likedUsers: Array,
   },
   {
     timestamps: true

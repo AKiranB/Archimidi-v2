@@ -5,10 +5,11 @@ import { useEffect } from 'react'
 import { useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
 import SongCard from './SongCard'
+import axios from 'axios';
+
 
 export default function SongDetails(props) {
-    let history = useHistory()
-    // console.log(history)
+    let history = useHistory();
     const [song, setSong] = useState(null)
     const [midiPlayer, setMidiPlayer] = useState({ body: null })
 
@@ -17,32 +18,49 @@ export default function SongDetails(props) {
 
     const deleteSong = (id) => {
         try {
-            //// i made it work but i'm not sure I get it. response is not the right word.////
             const response = service
                 .deleteSong(id)
                 .then
-            console.log('song deleted:', response)
             history.push('/')
         } catch (err) {
             return console.log(err)
         }
-
     }
 
-    const retrieveSong = async (id) => {
-        try {
-            const response = await service
-                .getSong(id)
-            setSong(response)
-        } catch (err) {
-            history.push('/404')
-            return console.log(err)
-        }
+    const incrementLike = () => {
+        axios.put(`/api/like/${songId}`, { currentUserId })
+            .then(response => {
+                console.log(response.data)
+                setSong(response.data)
+            })
+            .catch(err => {
+                throw new Error('cannot update likes')
+            });
+    }
+    const decrementLike = () => {
+        axios.put(`/api/unlike/${songId}`, { currentUserId })
+            .then(response => {
+                console.log(response.data)
+                setSong(response.data)
+            })
+            .catch(err => {
+                throw new Error('cannot update likes')
+            });
     }
 
     useEffect(() => {
+        const retrieveSong = async (id) => {
+            try {
+                const response = await service
+                    .getSong(id)
+                setSong(response)
+            } catch (err) {
+                history.push('/404')
+                return console.log(err)
+            }
+        }
         retrieveSong(songId)
-    }, [songId])
+    }, [songId, history])
 
     useEffect(() => {
         const script = document.createElement('script');
@@ -74,11 +92,11 @@ export default function SongDetails(props) {
         })
     }, [song])
 
-
     return (
         <div className='secondaryContainer'>
             {song && (
                 <div className='baseForm'>
+
                     <SongCard className='songCard' key={song._id} {...song} />
 
                     <div >
@@ -86,6 +104,12 @@ export default function SongDetails(props) {
 
                         {(currentUserId === song.createdBy) && <Link to={`/songs/edit/${song._id}`}><button>Edit {song.title}</button></Link>}
                     </div>
+                    {song.likedUsers.includes(currentUserId) ? (
+                        <button onClick={() => decrementLike(songId)}>Unlike</button>
+                    ) : (
+                        <button onClick={() => incrementLike(songId)}>Like</button>
+                    )}
+
                     {(midiPlayer.body !== null) ? <div>{midiPlayer.body}</div> : <p>nothing to play</p>}
                 </div>)}
         </div>
