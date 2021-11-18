@@ -4,7 +4,7 @@ import service from '../api/service'
 
 export default function NavBar(props) {
 
-  // console.log('logged in user is >>>>>>>>>>>>>>>>>>>>>>>>>>>', props.user)
+
   const path = useLocation().pathname
   const history = useHistory()
   const { search, setSearch } = props;
@@ -33,8 +33,9 @@ export default function NavBar(props) {
         <Link to='/'>
           <p>ArchiMIDI</p>
         </Link>
-      {searchBar}
+        {searchBar}
       </div>
+
       {props.user ? (
         <div className='rightNav'>
           <Link to="/" onClick={() => handleLogout()}>
@@ -53,7 +54,7 @@ export default function NavBar(props) {
       ) : (
         <div className='rightNav'>
 
-          {path === '/login' && <p>don't have an account?</p>}
+          {path === '/login' && <p>Don't have an account?</p>}
 
           {path !== '/signup' && <>
             <Link to='/signup'>
@@ -63,7 +64,7 @@ export default function NavBar(props) {
 
           {(path !== '/signup' && path !== '/login') && <p>or</p>}
 
-          {path === '/signup' && <p>already  a user?</p>}
+          {path === '/signup' && <p>Already a user?</p>}
 
           {path !== '/login' &&
             <Link to='/login'>
@@ -71,7 +72,7 @@ export default function NavBar(props) {
             </Link>
           }
 
-          {(path !== '/signup' && path !== '/login') && <p>to upload a song </p>}
+          {(path !== '/signup' && path !== '/login') && <p>To upload a song </p>}
         </div>
       )}
     </nav>

@@ -11,27 +11,19 @@ export default function Signup(props) {
 
     const handleSubmit = e => {
         e.preventDefault()
-        // console.log(username, password)
         service.signup(username, password)
             .then(response => {
-                console.log(response)
                 if (response.message) {
                     setUsername('');
                     setPassword('');
                     setMessage(response.message)
-                    console.log(response.message)
-                } else {
 
-                    console.log(username)
+                } else {
                     props.setUser(response)
                     props.history.push('/')
-
-
                 }
             })
             .catch(err => console.log(err))
-
-
     }
     return (
         <div className='secondaryContainer'>
