@@ -12,6 +12,7 @@ export default function SongDetails(props) {
     let history = useHistory();
     const [song, setSong] = useState(null)
     const [midiPlayer, setMidiPlayer] = useState({ body: null })
+    const [songLikedUsers, setSongLikedUsers] = useState(null)
 
     let currentUserId = (props.user ? props.user._id : '');
     const songId = props.match.params.id
@@ -37,6 +38,7 @@ export default function SongDetails(props) {
                 throw new Error('cannot update likes')
             });
     }
+
     const decrementLike = () => {
         axios.put(`/api/unlike/${songId}`, { currentUserId })
             .then(response => {
@@ -54,6 +56,7 @@ export default function SongDetails(props) {
                 const response = await service
                     .getSong(id)
                 setSong(response)
+                setSongLikedUsers(response.likedUsers)
             } catch (err) {
                 history.push('/404')
                 return console.log(err)
@@ -94,9 +97,11 @@ export default function SongDetails(props) {
 
     return (
         <div className='secondaryContainer'>
+            {(currentUserId === '' && (
+                <Link to='/login'><div style={{ color: 'red' }}>Log in to download and like this MIDI song</div></Link>
+            ))}
             {song && (
                 <div className='baseForm'>
-
                     <SongCard className='songCard' key={song._id} {...song} />
 
                     <div >
@@ -104,14 +109,19 @@ export default function SongDetails(props) {
 
                         {(currentUserId === song.createdBy) && <Link to={`/songs/edit/${song._id}`}><button>Edit {song.title}</button></Link>}
                     </div>
-                    {song.likedUsers.includes(currentUserId) ? (
-                        <button onClick={() => decrementLike(songId)}>Unlike</button>
-                    ) : (
-                        <button onClick={() => incrementLike(songId)}>Like</button>
+                    {(midiPlayer.body !== null) ? <div>{midiPlayer.body}</div> : <p>There's nothing to play</p>}
+                    {(currentUserId !== '' && (
+                        <div>
+                            {song.likedUsers.includes(currentUserId) ? (
+                                <button onClick={() => decrementLike(songId)}>Unlike this song</button>
+                            ) : (
+                                <button onClick={() => incrementLike(songId)}>Like this song</button>
+                            )}
+                        </div>)
                     )}
-
-                    {(midiPlayer.body !== null) ? <div>{midiPlayer.body}</div> : <p>nothing to play</p>}
                 </div>)}
+
+
         </div>
     )
 }
