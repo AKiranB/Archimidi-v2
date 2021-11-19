@@ -4,13 +4,12 @@ import service from '../api/service';
 
 
 export default function Signup(props) {
-
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
 
     const handleSubmit = e => {
-        e.preventDefault()
+        e.preventDefault();
         service.signup(username, password)
             .then(response => {
                 if (response.message) {

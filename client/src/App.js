@@ -20,27 +20,57 @@ function App(props) {
     setUser(user);
   }
 
-
   function NotFound() {
 
     return (<><h1>404 - Not Found</h1>  <Link to='/'>Return home</Link></>)
   }
 
-
   return (
     <div className="App">
 
-      <NavBar user={user} setUser={setUser} search={search} setSearch={setSearch} currentPage={props}></NavBar>
+      <NavBar
+        user={user}
+        setUser={setUser}
+        search={search}
+        setSearch={setSearch}
+        currentPage={props}
+      />
       <div className='mainContainer'>
         <Switch>
-          <Route exact path={PATHS.HOMEPAGE}
-            render={props => <SongsList search={search} setSearch={setSearch} />} />
+          <Route
+            exact path={PATHS.HOMEPAGE}
+            render={props =>
+              <SongsList
+                search={search}
+                setSearch={setSearch}
+              />
+            }
+          />
           <Route exact path="/songs/add"
-            render={user ? props => <AddSong user={user} setUser={setUser} /> : props => <Login setUser={addUser}{...props} />
-            } />
-          <Route exact path="/songs/:id"
-            render={user ? props => <SongDetails user={user}{...props} /> : props => <SongDetails user={null}{...props} />
-            } />
+            render={user ? props =>
+              <AddSong
+                user={user}
+                setUser={setUser}
+              /> : props =>
+              <Login
+                setUser={addUser}
+                {...props}
+              />
+            }
+          />
+          <Route
+            exact path="/songs/:id"
+            render={user ? props =>
+              <SongDetails
+                user={user}
+                {...props}
+              /> : props =>
+              <SongDetails
+                user={null}
+                {...props}
+              />
+            }
+          />
 
           <Route exact path="/signup"
             render={props => <Signup setUser={addUser}{...props} />} />
@@ -49,7 +79,7 @@ function App(props) {
           <Route exact path="/mysongs"
             render={props => <MySongs user={user} setUser={setUser} />} />
           <Route exact path="/songs/edit/:id" component={EditSong} />
-          <Route component={NotFound} />
+          <Route component={NotFound} />2
         </Switch>
       </div>
     </div>

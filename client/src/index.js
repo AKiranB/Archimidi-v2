@@ -7,10 +7,8 @@ import axios from 'axios'
 
 axios.get('/api/auth/loggedin')
   .then(response => {
-    console.log('response in: ', response);
     const user = response.data;
     ReactDOM.render(
-
       <Router>
         <App user={user} search={''} />
       </Router>,

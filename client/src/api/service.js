@@ -13,38 +13,46 @@ const findAllSongs = () => {
   return service
     .get('/songs')
     .then(res => res.data)
-    .catch(errorHandler);
+    .catch(err => {
+      errorHandler('error retrieving all songs', err)
+    })
 }
 
 const getSong = (songId) => {
   return service
     .get(`/songs/${songId}`)
     .then(res => res.data)
-    .catch(errorHandler)
+    .catch(err => {
+      errorHandler('error retrieving song:', err)
+    })
 }
 
 const handleUpload = file => {
   return service
     .post('/upload', file)
     .then(res => res.data)
-    .catch(errorHandler);
+    .catch(err => {
+      errorHandler('error uploading file:', err)
+    });
 };
 
 const saveNewSong = newSong => {
   return service
     .post('/songs/create', newSong)
     .then(res => res.data)
-    .catch(errorHandler);
+    .catch(err => {
+      errorHandler('error saving new song', err)
+    });
 };
-
 
 const deleteSong = (songId) => {
   return service
     .delete(`/${songId}`)
     .then(res => res.data)
-    .catch(errorHandler)
+    .catch(err => {
+      errorHandler('error deleting song:', err)
+    })
 }
-//**********<-----------Authentication Starts here---------->**********/
 
 const signup = (username, password) => {
   return service.post('/auth/signup', { username, password })
@@ -60,7 +68,7 @@ const login = (username, password) => {
 
   return service.post('/auth/login', { username, password })
     .then(response => {
-      console.log('service.js login response:', response)
+
       return response.data
     })
     .catch(err => {
@@ -81,14 +89,15 @@ const logout = () => {
 
 const data = {
   service,
-  deleteSong,
   handleUpload,
   saveNewSong,
   findAllSongs,
   getSong,
   signup,
   login,
-  logout
+  logout,
+  errorHandler,
+  deleteSong
 };
 
 

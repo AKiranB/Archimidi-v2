@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-const { Schema, model } = mongoose;
-
-// comment
+const { Schema, model } = mongoose
 
 const MidiSong = new Schema(
   {

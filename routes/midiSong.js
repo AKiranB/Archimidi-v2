@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const MidiSong = require('../models/MidiSong');
 const fileUploader = require('../config/cloudinary.config');
+const cloudinary = require('../config/cloudinary.config')
 const e = require('express');
 
 

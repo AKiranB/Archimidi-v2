@@ -1,36 +1,28 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import service from '../api/service'
 
 export default function EditSong(props) {
 
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
-
     const songId = props.match.params.id;
-    // console.log(songId);
-
-    const getSong = () => {
-        axios.get(`/api/songs/${songId}`)
-            .then(response => {
-                console.log(response.data)
-                setTitle(response.data.title)
-                setAuthor(response.data.author)
-            })
-            .catch(err => console.log(err))
-    }
 
     useEffect(() => {
-        getSong();
-    }, [])
+        const retrieveSong = async (id) => {
+            const response = await service.getSong(id);
+            setTitle(response.title)
+            setAuthor(response.author)
+        }
+        retrieveSong(songId)
+    }, [songId])
 
     const handleSubmit = e => {
-
         e.preventDefault();
         const requestBody = { title, author };
         axios.put(`/api/${songId}`, requestBody)
-            .then(response => {
-                console.log(response)
+            .then(() => {
                 props.history.push(`/songs/${songId}`)
             })
             .catch(err => console.log(err))
@@ -43,7 +35,7 @@ export default function EditSong(props) {
                 <label htmlFor="title">
                     Title:
                 </label>
-                <input  
+                <input
                     type="text"
                     name="title"
                     value={title}
