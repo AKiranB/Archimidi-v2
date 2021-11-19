@@ -8,47 +8,48 @@ import SongCard from './SongCard'
 import axios from 'axios';
 
 
-export default function SongDetails(props) {
-    let history = useHistory();
-    const [song, setSong] = useState(null)
-    const [midiPlayer, setMidiPlayer] = useState({ body: null })
-    const [songLikedUsers, setSongLikedUsers] = useState(null)
 
+export default function SongDetails(props) {
+    const [song, setSong] = useState(null);
+    const [midiPlayer, setMidiPlayer] = useState({ body: null });
+    let history = useHistory();
     let currentUserId = (props.user ? props.user._id : '');
-    const songId = props.match.params.id
+    const songId = props.match.params.id;
+
+
 
     const deleteSong = (id) => {
         try {
-            const response = service
-                .deleteSong(id)
-                .then
+            service.deleteSong(id)
             history.push('/')
         } catch (err) {
             return console.log(err)
         }
     }
 
+
+
     const incrementLike = () => {
         axios.put(`/api/like/${songId}`, { currentUserId })
             .then(response => {
-                console.log(response.data)
+
                 setSong(response.data)
             })
             .catch(err => {
                 throw new Error('cannot update likes')
             });
-    }
+    };
 
     const decrementLike = () => {
         axios.put(`/api/unlike/${songId}`, { currentUserId })
             .then(response => {
-                console.log(response.data)
+
                 setSong(response.data)
             })
             .catch(err => {
                 throw new Error('cannot update likes')
             });
-    }
+    };
 
     useEffect(() => {
         const retrieveSong = async (id) => {
@@ -56,7 +57,6 @@ export default function SongDetails(props) {
                 const response = await service
                     .getSong(id)
                 setSong(response)
-                setSongLikedUsers(response.likedUsers)
             } catch (err) {
                 history.push('/404')
                 return console.log(err)
@@ -98,30 +98,48 @@ export default function SongDetails(props) {
     return (
         <div className='secondaryContainer'>
             {(currentUserId === '' && (
-                <Link to='/login'><div style={{ color: 'red' }}>Log in to download and like this MIDI song</div></Link>
+                <Link to='/login'>
+                    <div style={{ color: 'red' }}>
+                        Log in to download and like this MIDI song
+                    </div>
+                </Link>
             ))}
             {song && (
                 <div className='baseForm'>
-                    <SongCard className='songCard' key={song._id} {...song} />
-
+                    <SongCard
+                        className='songCard'
+                        key={song._id}
+                        {...song}
+                    />
                     <div >
-                        {(currentUserId === song.createdBy) && <button onClick={() => deleteSong(song._id)}>Delete {song.title}</button>}
+                        {(currentUserId === song.createdBy) &&
+                            <button onClick={() => deleteSong(song._id)}>
+                                Delete {song.title}
+                            </button>}
 
-                        {(currentUserId === song.createdBy) && <Link to={`/songs/edit/${song._id}`}><button>Edit {song.title}</button></Link>}
+                        {(currentUserId === song.createdBy) &&
+                            <Link to={`/songs/edit/${song._id}`}>
+                                <button>
+                                    Edit {song.title}
+                                </button>
+                            </Link>
+                        }
                     </div>
                     {(midiPlayer.body !== null) ? <div>{midiPlayer.body}</div> : <p>There's nothing to play</p>}
                     {(currentUserId !== '' && (
                         <div>
                             {song.likedUsers.includes(currentUserId) ? (
-                                <button onClick={() => decrementLike(songId)}>Unlike this song</button>
+                                <button onClick={() => decrementLike(songId)}>
+                                    Unlike this song
+                                </button>
                             ) : (
-                                <button onClick={() => incrementLike(songId)}>Like this song</button>
+                                <button onClick={() => incrementLike(songId)}>
+                                    Like this song
+                                </button>
                             )}
                         </div>)
                     )}
                 </div>)}
-
-
         </div>
     )
 }

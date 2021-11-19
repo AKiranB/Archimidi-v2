@@ -23,7 +23,13 @@ export default function NavBar(props) {
 
   const searchBar =
     <form className='searchBar'>
-      <input type="search" name="search" value={search} onChange={e => setSearch(e.target.value)} placeholder='Type your search here' />
+      <input
+        type="search"
+        name="search"
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+        placeholder='Type your search here'
+      />
       {path !== '/' && <button onClick={handleSearch}> Search  </button>}
     </form>
 
