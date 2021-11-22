@@ -1,13 +1,11 @@
-import React from 'react'
-import { useState } from 'react'
-import service from '../api/service'
-import { useEffect } from 'react'
-import { useHistory } from 'react-router'
-import { Link } from 'react-router-dom'
-import SongCard from './SongCard'
+import React from 'react';
+import { useState } from 'react';
+import service from '../api/service';
+import { useEffect } from 'react';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import SongCard from './SongCard';
 import axios from 'axios';
-
-
 
 export default function SongDetails(props) {
     const [song, setSong] = useState(null);
@@ -16,54 +14,45 @@ export default function SongDetails(props) {
     let currentUserId = (props.user ? props.user._id : '');
     const songId = props.match.params.id;
 
-
-
     const deleteSong = (id) => {
         try {
-            service.deleteSong(id)
+
+            const response = service
+                .deleteSong(id)
             history.push('/')
         } catch (err) {
             return console.log(err)
         }
+
     }
-
-
 
     const incrementLike = () => {
         axios.put(`/api/like/${songId}`, { currentUserId })
             .then(response => {
-
-                setSong(response.data)
+                setSong(response.data);
             })
             .catch(err => {
-                throw new Error('cannot update likes')
+                throw new Error('Cannot update likes:', err);
             });
     };
 
     const decrementLike = () => {
         axios.put(`/api/unlike/${songId}`, { currentUserId })
             .then(response => {
-
                 setSong(response.data)
             })
             .catch(err => {
-                throw new Error('cannot update likes')
+                throw new Error('Cannot update likes:', err)
             });
     };
 
     useEffect(() => {
         const retrieveSong = async (id) => {
-            try {
-                const response = await service
-                    .getSong(id)
-                setSong(response)
-            } catch (err) {
-                history.push('/404')
-                return console.log(err)
-            }
-        }
-        retrieveSong(songId)
-    }, [songId, history])
+            const response = await service.getSong(id);
+            setSong(response);
+        };
+        retrieveSong(songId);
+    }, [songId])
 
     useEffect(() => {
         const script = document.createElement('script');
