@@ -97,6 +97,7 @@ export default function SongDetails(props) {
                     <SongCard
                         id='songCardDetails'
                         key={song._id}
+                        user={props.user}
                         {...song}
                     />
                     <div >

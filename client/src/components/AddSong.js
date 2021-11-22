@@ -144,7 +144,7 @@ function AddSong(props) {
 
       {message && <p>{message}</p>}
       <div className='tagsBox'>
-        {tags.map(tag =>
+        {tags.map((tag, index) =>
           <>
             <p>{tag}</p>
             <form onSubmit={handleDeleteTag} >

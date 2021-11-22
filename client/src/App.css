@@ -10,8 +10,6 @@
   }
 }
 
-
-
 label,
 button,
 input {
@@ -22,8 +20,10 @@ input {
 
 .App {
   text-align: center;
-  background: linear-gradient(#19004b, #131215);
+  /* background: linear-gradient(#8e8e8e, #cbcbcb); */
+  background-color: rgb(191, 191, 191);
   min-height: 100vh;
+  font-size: 18px;
 
 }
 
@@ -55,7 +55,7 @@ input {
 }
 
 .navBar a:hover {
-  color: #ffb000;
+  color: #9575e1;
 }
 
 .searchBar {
@@ -250,7 +250,7 @@ h4 {
   max-height: 250px;
   min-height: 200px;
   border-radius: 7px;
-  box-shadow: 5px 5px 10px #414045, -5px -5px 10px
+  box-shadow: 2px 2px 4px #686868, -2px -2px 4px
  
   
 }
@@ -288,7 +288,7 @@ h4 {
 
 .Input{
 
-  min-width: 400px;
+  min-width: 320px !important ;
 
 
 }
@@ -308,13 +308,29 @@ h4 {
 
 .cardTop{
   text-align: center;
-  background: linear-gradient(#421ad5, #939393);
+  background: linear-gradient(#674dc2, #939393);
   margin-bottom: 5px;
   width:250px;
-  height:70px;
+  height:auto;
   padding-top:5px;
   border-bottom: 1px solid grey;
   
  
 }
 
+
+.customButton{
+
+  padding-top: 20px;
+  min-width: 20px;
+}
+
+.customButton:Hover{
+
+  color:#4f2bd5;
+  transition: 0.2s all ease-in-out;
+}
+
+.Input{
+  margin-bottom: 20px !important;
+}
