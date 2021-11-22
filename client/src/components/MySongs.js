@@ -8,9 +8,9 @@ export default function MySongs(props) {
     const [allSongs, setAllSongs] = useState([]);
 
     const getMySongs = async () => {
-        const result = await service.findAllSongs()
-        setAllSongs(result)
-    }
+        const result = await service.findAllSongs();
+        setAllSongs(result);
+    };
 
     useEffect(() => {
         getMySongs()
@@ -18,7 +18,7 @@ export default function MySongs(props) {
 
     const filteredSongs = allSongs.filter(song => {
         return song.createdBy === props.user._id
-    })
+    });
 
     return (
         <>

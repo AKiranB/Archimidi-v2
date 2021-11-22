@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import React from 'react'
 
-export default function SongCard({ title, _id, songUrl, author, tags, likes }) {
-
+export default function SongCard({
+    title,
+    _id,
+    songUrl,
+    author,
+    tags,
+    likes
+}) {
 
     return (
         <div key={_id} className='songCard'>

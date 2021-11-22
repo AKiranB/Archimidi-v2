@@ -11,8 +11,8 @@ function SongsList(props) {
   const [searchFields, setSearchFields] = useState({ title: true, author: true, tags: false })
 
   const getAllSongs = async () => {
-    const result = await service.findAllSongs()
-    setAllSongs(result)
+    const result = await service.findAllSongs();
+    setAllSongs(result);
   }
 
   useEffect(() => {
