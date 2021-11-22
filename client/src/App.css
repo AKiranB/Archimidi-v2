@@ -1,5 +1,5 @@
 * {
-  font-family: "Roboto Mono", monospace !important;
+  font-family: 'Quicksand', sans-serif !important;
 }
 @media (max-width: 1080px) {
   .rightNav {
@@ -9,6 +9,8 @@
     margin-right: 1em;
   }
 }
+
+
 
 label,
 button,
@@ -20,8 +22,9 @@ input {
 
 .App {
   text-align: center;
-  background-color: azure;
-  color: black;
+  background: linear-gradient(#19004b, #131215);
+  min-height: 100vh;
+
 }
 
 .navBar {
@@ -29,7 +32,7 @@ input {
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  background-color: #dc267f;
+  background-color: #131313;
   border: 1px black solid;
   text-decoration: none;
   color: pink;
@@ -118,15 +121,15 @@ input {
   margin-top: 1em;
   display: flex;
   flex-direction: column;
-  /* background-color: lime; */
   align-items: center;
   width: 100%;
+  justify-content: center;
 }
 
 .secondaryContainer{
   /* background: magenta; */
-  width: 70%;
-  min-width: 350px
+  width: 100%;
+  min-width: 350px;
 }
 
 .baseForm {
@@ -134,6 +137,9 @@ input {
   display: flex;
   flex-direction: column;
   width: 100%;
+  align-items: center;
+  justify-content: center;
+  max-width: 1000%;
   /* background-color: papayawhip; */
 }
 
@@ -151,7 +157,9 @@ input {
 .baseForm button:hover {
   background-color: #648fff;
   color: #ffffff;
+
 }
+
 
 form input[type="text"],
 form input[type="password"] {
@@ -219,12 +227,12 @@ a {
 }
 
 h3 {
-  color: black;
+  color: #000000;
   margin: 0.3em;
 }
 
 h4 {
-  color: #dc267f;
+  color: #141315;
   margin: 0.2em;
 }
 
@@ -233,8 +241,80 @@ h4 {
 }
 
 .songCard{
-  border: solid 1px black;
-  margin: 1em;
-  padding-bottom: 1em;
-  background: white;
+  font-size: 10x;
+  border: none;
+  margin: 5em;
+  background: rgb(154, 154, 154);
+  min-width: 200px;
+  max-width: 250px;
+  max-height: 250px;
+  min-height: 200px;
+  border-radius: 7px;
+  box-shadow: 5px 5px 10px #414045, -5px -5px 10px
+ 
+  
 }
+
+.songsListContainer{
+
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+
+}
+.songCard:hover{
+
+  
+  box-shadow:  5px 5px 10px #4237a2, -3px -3px 10px;
+    transition: 0.3s all ease-in-out;
+
+
+}
+
+
+.songCardDetails{
+
+ background-color:black!;
+}
+
+.piano-roll-visualizer{
+
+  width:1000px;
+  background-color: #555555;
+}
+
+.Input{
+
+  min-width: 400px;
+
+
+}
+
+.likeAndDownloadContainer{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.likeAndDownloadContainer > a{
+  margin-right: 20px;
+  margin-top:0.5px;
+  
+}
+
+.cardTop{
+  text-align: center;
+  background: linear-gradient(#421ad5, #939393);
+  margin-bottom: 5px;
+  width:250px;
+  height:70px;
+  padding-top:5px;
+  border-bottom: 1px solid grey;
+  
+ 
+}
+

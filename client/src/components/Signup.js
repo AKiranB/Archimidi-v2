@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
 import service from '../api/service';
+import Button from '@mui/material/Button';
+import Input from '@mui/material/Input';
 
 
 export default function Signup(props) {
@@ -29,20 +31,22 @@ export default function Signup(props) {
             <h3>Sign up</h3>
             <form onSubmit={handleSubmit} className='baseForm'>
                 <label htmlFor="username">Username: </label>
-                <input
+                <Input
                     type="text"
                     name="username"
                     value={username}
                     onChange={e => setUsername(e.target.value)}
+                    className='Input'
                 />
                 <label htmlFor="password">Password: </label>
-                <input
+                <Input
                     type="password"
                     name="password"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
+                    className='Input'
                 />
-                <button type="submit">Sign Up ✍️</button>
+                <Button type="submit">Sign Up ✍️</Button>
                 {message && (
                     <h3>{message}</h3>
                 )}

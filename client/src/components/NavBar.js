@@ -1,6 +1,7 @@
 import { useLocation, Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import service from '../api/service';
+import { Input } from "@mui/material";
 
 export default function NavBar(props) {
 
@@ -23,7 +24,7 @@ export default function NavBar(props) {
 
   const searchBar =
     <form className='searchBar'>
-      <input
+      <Input
         type="search"
         name="search"
         value={search}

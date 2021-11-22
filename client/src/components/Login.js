@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import service from '../api/service';
-
+import Button from '@mui/material/Button';
+import Input from '@mui/material/Input';
 export default function Login(props) {
 
     const [username, setUsername] = useState('');
@@ -22,6 +23,9 @@ export default function Login(props) {
                     props.history.push('/')
                 }
             })
+            .catch(err => {
+                console.log(err)
+            })
 
     }
     return (
@@ -29,20 +33,22 @@ export default function Login(props) {
             <h3>Log in</h3>
             <form onSubmit={handleSubmit} className='baseForm'>
                 <label htmlFor="username">Username: </label>
-                <input
+                <Input
                     type="text"
                     name="username"
                     value={username}
                     onChange={e => setUsername(e.target.value)}
+                    className='Input'
                 />
                 <label htmlFor="password">Password: </label>
-                <input
+                <Input
                     type="password"
                     name="password"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
+                    className='Input'
                 />
-                <button type="submit">Log in✍️</button>
+                <Button type="submit">Log in✍️</Button>
                 {message && (
                     <h3>{message}</h3>
                 )}

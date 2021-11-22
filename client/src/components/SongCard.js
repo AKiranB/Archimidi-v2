@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 import React from 'react'
+import DownloadIcon from '@mui/icons-material/Download';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
+
 
 export default function SongCard({
     title,
@@ -7,24 +11,32 @@ export default function SongCard({
     songUrl,
     author,
     tags,
-    likes
+    likes,
+    user
+
 }) {
+
+    console.log(user)
+
+
 
     return (
         <div key={_id} className='songCard'>
             <Link className="Link"
                 to={`/songs/${_id}`}
             >
-                <h3>{title}</h3>
-                <h4>{author}</h4>
+                <div className='cardTop'>
+                    <h3>{title}</h3>
+                    <h4>By {author}</h4>
+                </div>
             </Link>
             <div className='tagsBox'>
                 {tags && tags.map((tag, i) => <p key={i}>{tag}</p>)}
             </div>
-            <div>
-                {likes} likes
+            <div className='likeAndDownloadContainer'>
+                <a href={songUrl} download={`${title}_${author}.mid`}><DownloadIcon /></a>
+                <p><FavoriteIcon />{likes} </p>
             </div>
-            <a href={songUrl} download={`${title}_${author}.mid`}>Download</a>
         </div>
     )
 }

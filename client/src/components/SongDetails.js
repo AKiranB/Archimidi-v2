@@ -16,7 +16,6 @@ export default function SongDetails(props) {
 
     const deleteSong = (id) => {
         try {
-
             const response = service
                 .deleteSong(id)
             history.push('/')
@@ -96,7 +95,7 @@ export default function SongDetails(props) {
             {song && (
                 <div className='baseForm'>
                     <SongCard
-                        className='songCard'
+                        id='songCardDetails'
                         key={song._id}
                         {...song}
                     />
