@@ -1,5 +1,5 @@
 * {
-  font-family: "Roboto Mono", monospace !important;
+  font-family: 'Quicksand', sans-serif !important;
 }
 @media (max-width: 1080px) {
   .rightNav {
@@ -20,8 +20,11 @@ input {
 
 .App {
   text-align: center;
-  background-color: azure;
-  color: black;
+  /* background: linear-gradient(#8e8e8e, #cbcbcb); */
+  background-color: rgb(255, 253, 253);
+  min-height: 100vh;
+  font-size: 18px;
+
 }
 
 .navBar {
@@ -29,7 +32,7 @@ input {
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  background-color: #dc267f;
+  background-color: #131313;
   border: 1px black solid;
   text-decoration: none;
   color: pink;
@@ -52,7 +55,7 @@ input {
 }
 
 .navBar a:hover {
-  color: #ffb000;
+  color: #9575e1;
 }
 
 .searchBar {
@@ -118,15 +121,23 @@ input {
   margin-top: 1em;
   display: flex;
   flex-direction: column;
-  /* background-color: lime; */
   align-items: center;
   width: 100%;
+  justify-content: center;
 }
 
 .secondaryContainer{
   /* background: magenta; */
-  width: 70%;
-  min-width: 350px
+  width: 20%;
+  min-width: 200px;
+  min-height: 350px;
+  border: solid black 0.5px;
+  margin-top: 100px;
+  border-radius: 5px;
+  background-color: rgb(247, 247, 247);
+  padding: 50px;
+  
+
 }
 
 .baseForm {
@@ -134,6 +145,9 @@ input {
   display: flex;
   flex-direction: column;
   width: 100%;
+  align-items: center;
+  justify-content: center;
+  max-width: 1000%;
   /* background-color: papayawhip; */
 }
 
@@ -151,7 +165,9 @@ input {
 .baseForm button:hover {
   background-color: #648fff;
   color: #ffffff;
+
 }
+
 
 form input[type="text"],
 form input[type="password"] {
@@ -181,12 +197,12 @@ input[type="file"] {
   /* background: peachpuff; */
   padding: 9px 10px 9px 10px;
   margin: 1em;
-  background-color: #dc267f;
+  background-color: #bcbcc1;
   color: white;
 }
 
 .fileUpload:hover {
-  background: plum;
+  background: rgb(78, 78, 228);
   color: black;
 }
 
@@ -219,12 +235,12 @@ a {
 }
 
 h3 {
-  color: black;
+  color: #000000;
   margin: 0.3em;
 }
 
 h4 {
-  color: #dc267f;
+  color: #141315;
   margin: 0.2em;
 }
 
@@ -233,8 +249,113 @@ h4 {
 }
 
 .songCard{
-  border: solid 1px black;
-  margin: 1em;
-  padding-bottom: 1em;
-  background: white;
+  font-size: 10x;
+  border: none;
+  margin: 5em;
+  background: rgb(232, 232, 232);
+  min-width: 220px;
+  max-width: auto;
+  max-height: auto;
+  min-height: 220px;
+  border-radius: 7px;
+  box-shadow: 2px 2px 4px rgb(152, 152, 152), -1px -1px 5px
+ 
+  
 }
+
+.songsListContainer{
+
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+
+}
+.songCard:hover{
+
+  
+  box-shadow:  2px 2px 3px #434343, -3px -3px 5px;
+    transition: 0.3s all ease-in-out;
+
+
+}
+
+
+.songCardDetails{
+
+ background-color:black!;
+}
+
+.piano-roll-visualizer{
+
+  width:1000px;
+  background-color: #555555;
+}
+
+.Input{
+
+  min-width: 320px !important ;
+
+
+}
+
+.likeAndDownloadContainer{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.likeAndDownloadContainer > a{
+  margin-right: 20px;
+  margin-top:0.5px;
+  
+}
+
+.cardTop{
+  text-align: center;
+  background: linear-gradient(#c2b1ff, #d0d0d0);
+  margin-bottom: 5px;
+  border-radius: 3px;
+  width:auto;
+  height:auto;
+  padding-top:5px;
+  border-bottom: 1px solid grey;
+  
+ 
+}
+
+
+.customButton{
+
+  padding-top: 20px;
+  min-width: 20px;
+}
+
+.customButton:Hover{
+
+  color:#4f2bd5;
+  transition: 0.2s all ease-in-out;
+}
+
+.Input{
+  margin-bottom: 40px !important;
+  
+}
+
+.detailsContainer{
+
+  border:0.5px solid black;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+midi-player{
+
+  color: rgb(43, 0, 255);
+  margin-bottom: 50px;
+  border-radius: 5px;
+}
+

@@ -2,6 +2,8 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import service from '../api/service';
 import { useHistory } from 'react-router';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 function AddSong(props) {
   let history = useHistory();
@@ -49,9 +51,9 @@ function AddSong(props) {
   };
 
 
-  const saveButton = <button className='bottomMargin' type="submit">Save new song</button>
+  const saveButton = <Button variant='contained' className='bottomMargin' type="submit">Save new song</Button>
   const loadIcon = <p>Loading</p>
-  const waitingIcon = <p>Waiting for a file...</p>
+  const waitingIcon = <p style={{ fontSize: 15 }}>Waiting for file...</p>
 
 
   const HandleTagSubmit = e => {
@@ -100,21 +102,25 @@ function AddSong(props) {
 
   return (
     <div className='secondaryContainer'>
-      <h2>New Song</h2>
+      <h2>Add a New MIDI song</h2>
       <form onSubmit={handleSubmit} className='baseForm'>
 
-        <input
+
+        <TextField
           type="text"
           name="title"
           value={title}
           onChange={e => setTitle(e.target.value)}
+          id="outlined-basic" label="Title" variant="outlined"
           placeholder='Title'
+          className='Input'
         />
 
-        <input
-          className='bottomMargin'
+        <TextField
+          className='Input'
           type="text" name="author"
           value={author} onChange={e => setAuthor(e.target.value)}
+          id="outlined-basic" label="Author" variant="outlined"
           placeholder='Author'
         />
         <div>
@@ -131,30 +137,30 @@ function AddSong(props) {
 
         <form onSubmit={HandleTagSubmit} className='baseForm'>
 
-          <input
+          <TextField
             type="text"
             name="tag" value={tag}
             placeholder='Add tags'
             onChange={e => setTag(e.target.value)}
           />
-          <button type="submit">Add</button>
+          <Button type="submit">Add</Button>
 
         </form>}
 
 
       {message && <p>{message}</p>}
       <div className='tagsBox'>
-        {tags.map(tag =>
+        {tags.map((tag, index) =>
           <>
             <p>{tag}</p>
             <form onSubmit={handleDeleteTag} >
 
-              <button
+              <Button
                 name='tagButton'
                 type="submit"
                 value={tag}
               >x
-              </button>
+              </Button>
 
             </form>
           </>

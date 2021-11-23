@@ -13,6 +13,8 @@ import EditSong from "./components/EditSong";
 import { Link } from "react-router-dom";
 
 
+
+
 function App(props) {
   const [search, setSearch] = useState(props.search);
   const [user, setUser] = useState(props.user)
@@ -43,6 +45,7 @@ function App(props) {
               <SongsList
                 search={search}
                 setSearch={setSearch}
+                user={user}
               />
             }
           />

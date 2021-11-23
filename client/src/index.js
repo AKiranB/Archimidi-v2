@@ -5,6 +5,9 @@ import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
 import axios from 'axios'
 
+
+
+
 axios.get('/api/auth/loggedin')
   .then(response => {
     const user = response.data;

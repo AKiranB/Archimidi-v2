@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState } from 'react'
 import service from '../api/service';
-
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 export default function Login(props) {
 
     const [username, setUsername] = useState('');
@@ -22,27 +23,36 @@ export default function Login(props) {
                     props.history.push('/')
                 }
             })
+            .catch(err => {
+                console.log(err)
+            })
 
     }
     return (
         <div className='secondaryContainer'>
             <h3>Log in</h3>
             <form onSubmit={handleSubmit} className='baseForm'>
-                <label htmlFor="username">Username: </label>
-                <input
+
+                <TextField
                     type="text"
                     name="username"
                     value={username}
                     onChange={e => setUsername(e.target.value)}
+                    className='Input'
+                    error={message ? true : false}
+                    label="Username" variant="outlined"
+                    style={{ color: 'grey' }}
                 />
-                <label htmlFor="password">Password: </label>
-                <input
+                <TextField
                     type="password"
                     name="password"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
+                    className='Input'
+                    label="Password" variant="outlined"
+                    error={message ? true : false}
                 />
-                <button type="submit">Log in✍️</button>
+                <Button variant='contained' type="submit">Log in</Button>
                 {message && (
                     <h3>{message}</h3>
                 )}

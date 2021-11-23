@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import SongCard from './SongCard';
-import axios from 'axios';
 
 export default function SongDetails(props) {
     const [song, setSong] = useState(null);
@@ -16,7 +15,6 @@ export default function SongDetails(props) {
 
     const deleteSong = (id) => {
         try {
-
             const response = service
                 .deleteSong(id)
             history.push('/')
@@ -26,25 +24,6 @@ export default function SongDetails(props) {
 
     }
 
-    const incrementLike = () => {
-        axios.put(`/api/like/${songId}`, { currentUserId })
-            .then(response => {
-                setSong(response.data);
-            })
-            .catch(err => {
-                throw new Error('Cannot update likes:', err);
-            });
-    };
-
-    const decrementLike = () => {
-        axios.put(`/api/unlike/${songId}`, { currentUserId })
-            .then(response => {
-                setSong(response.data)
-            })
-            .catch(err => {
-                throw new Error('Cannot update likes:', err)
-            });
-    };
 
     useEffect(() => {
         const retrieveSong = async (id) => {
@@ -85,7 +64,7 @@ export default function SongDetails(props) {
     }, [song])
 
     return (
-        <div className='secondaryContainer'>
+        <div className='detailsContainer'>
             {(currentUserId === '' && (
                 <Link to='/login'>
                     <div style={{ color: 'red' }}>
@@ -96,8 +75,9 @@ export default function SongDetails(props) {
             {song && (
                 <div className='baseForm'>
                     <SongCard
-                        className='songCard'
+                        id='songCardDetails'
                         key={song._id}
+                        user={props.user}
                         {...song}
                     />
                     <div >
@@ -115,19 +95,6 @@ export default function SongDetails(props) {
                         }
                     </div>
                     {(midiPlayer.body !== null) ? <div>{midiPlayer.body}</div> : <p>There's nothing to play</p>}
-                    {(currentUserId !== '' && (
-                        <div>
-                            {song.likedUsers.includes(currentUserId) ? (
-                                <button onClick={() => decrementLike(songId)}>
-                                    Unlike this song
-                                </button>
-                            ) : (
-                                <button onClick={() => incrementLike(songId)}>
-                                    Like this song
-                                </button>
-                            )}
-                        </div>)
-                    )}
                 </div>)}
         </div>
     )

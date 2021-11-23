@@ -98,6 +98,7 @@ function SongsList(props) {
         <SongCard
           className='songCard'
           key={song._id}
+          user={props.user}
           {...song} />) : <p> No songs match your search</p>}
     </div>
   </>
