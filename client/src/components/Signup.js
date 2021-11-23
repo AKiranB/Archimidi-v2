@@ -29,7 +29,7 @@ export default function Signup(props) {
     }
     return (
         <div className='secondaryContainer'>
-            <h3>Sign up</h3>
+            <h3>Register</h3>
             <form onSubmit={handleSubmit} className='baseForm'>
                 <TextField
                     type="text"
@@ -52,7 +52,7 @@ export default function Signup(props) {
 
                 />
 
-                <Button variant='contained' type="submit">Sign Up </Button>
+                <Button variant='contained' type="submit">Register </Button>
 
                 {message && (
                     <h3>{message}</h3>

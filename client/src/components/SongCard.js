@@ -78,14 +78,14 @@ export default function SongCard({
                     <div>
                         {song.likedUsers.includes(currentUserId) ? (
                             <>
-                                <FavoriteIcon className='customButton' onClick={() => decrementLike(songId)} />
+                                <FavoriteIcon id='heartIcon' className='customButton' onClick={() => decrementLike(songId)} />
                                 {song.likes}
                             </>
 
                         ) : (
                             <>
 
-                                <FavoriteBorderIcon className='customButton' onClick={() => incrementLike(songId)} />
+                                <FavoriteBorderIcon id='heartIcon' className='customButton' onClick={() => incrementLike(songId)} />
                                 {song.likes}
 
                             </>
@@ -93,7 +93,7 @@ export default function SongCard({
                     </div>) : (
 
                     <>
-                        <FavoriteIcon className='customButton' />
+                        <FavoriteIcon id='heartIcon' className='customButton' />
                         {song.likes}
                     </>
 

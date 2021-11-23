@@ -175,6 +175,7 @@ input[type="password"]:focus {
   color: black;
   margin: 2em;
   min-width: 300px;
+  max-height: 500px;
   width: 70%;
   padding: 2em;
   border: 0.5px black solid;
