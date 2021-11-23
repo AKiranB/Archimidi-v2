@@ -2,7 +2,8 @@ import React from 'react'
 import { useState } from 'react';
 import service from '../api/service';
 import Button from '@mui/material/Button';
-import Input from '@mui/material/Input';
+
+import TextField from '@mui/material/TextField';
 
 
 export default function Signup(props) {
@@ -30,23 +31,29 @@ export default function Signup(props) {
         <div className='secondaryContainer'>
             <h3>Sign up</h3>
             <form onSubmit={handleSubmit} className='baseForm'>
-                <label htmlFor="username">Username: </label>
-                <Input
+                <TextField
                     type="text"
                     name="username"
                     value={username}
                     onChange={e => setUsername(e.target.value)}
                     className='Input'
+                    error={message ? true : false}
+                    label="Username" variant="outlined"
+
                 />
-                <label htmlFor="password">Password: </label>
-                <Input
+                <TextField
                     type="password"
                     name="password"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     className='Input'
+                    error={message ? true : false}
+                    label="Password" variant="outlined"
+
                 />
-                <Button type="submit">Sign Up ✍️</Button>
+
+                <Button variant='contained' type="submit">Sign Up </Button>
+
                 {message && (
                     <h3>{message}</h3>
                 )}

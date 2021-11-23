@@ -74,7 +74,7 @@ export default function SongCard({
             </div>
             <div className='likeAndDownloadContainer'>
                 <a href={songUrl} download={`${song.title}_${song.author}.mid`}><DownloadIcon className='customButton' /></a>
-                {(currentUserId !== '' && (
+                {(currentUserId !== '' ? (
                     <div>
                         {song.likedUsers.includes(currentUserId) ? (
                             <>
@@ -90,7 +90,14 @@ export default function SongCard({
 
                             </>
                         )}
-                    </div>)
+                    </div>) : (
+
+                    <>
+                        <FavoriteIcon className='customButton' />
+                        {song.likes}
+                    </>
+
+                )
                 )}
             </div>
         </div>

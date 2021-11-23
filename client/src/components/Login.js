@@ -39,10 +39,8 @@ export default function Login(props) {
                     value={username}
                     onChange={e => setUsername(e.target.value)}
                     className='Input'
-                    error={message}
-                    id="standard-basic"
-                    label="Username"
-                    variant="standard"
+                    error={message ? true : false}
+                    label="Username" variant="outlined"
                     style={{ color: 'grey' }}
                 />
                 <TextField
@@ -51,12 +49,10 @@ export default function Login(props) {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     className='Input'
-                    id="standard-basic"
-                    label="Password"
-                    variant="standard"
-                    error={message}
+                    label="Password" variant="outlined"
+                    error={message ? true : false}
                 />
-                <Button type="submit">Log in✍️</Button>
+                <Button variant='contained' type="submit">Log in</Button>
                 {message && (
                     <h3>{message}</h3>
                 )}
