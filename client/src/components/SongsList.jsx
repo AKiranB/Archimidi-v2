@@ -3,6 +3,7 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import service from '../api/service';
 import SongCard from "./SongCard";
+import { Checkbox } from "@mui/material";
 
 function SongsList(props) {
 
@@ -65,34 +66,35 @@ function SongsList(props) {
 
 
   return (<>
-
-    <label>
-      Search by title
-      <input
-        name="title"
-        type="checkbox"
-        checked={searchFields.title}
-        onChange={e => setSearchFields({ ...searchFields, title: e.target.checked })} />
-    </label>
-    <br />
-    <label>
-      Search by Author
-      <input
-        name="author"
-        type="checkbox"
-        checked={searchFields.author}
-        onChange={e => setSearchFields({ ...searchFields, author: e.target.checked })} />
-    </label>
-    <br />
-    <label>
-      Search through the tags
-      <input
-        name="tags"
-        type="checkbox"
-        checked={searchFields.tags}
-        onChange={e => setSearchFields({ ...searchFields, tags: e.target.checked })} />
-    </label>
-    <br />
+    <div className='searchTickBoxesContainer'>
+      <label>
+        Search by Title
+        <Checkbox
+          name="title"
+          type="checkbox"
+          checked={searchFields.title}
+          onChange={e => setSearchFields({ ...searchFields, title: e.target.checked })} />
+      </label>
+      <br />
+      <label>
+        Search by Author
+        <Checkbox
+          name="author"
+          type="checkbox"
+          checked={searchFields.author}
+          onChange={e => setSearchFields({ ...searchFields, author: e.target.checked })} />
+      </label>
+      <br />
+      <label>
+        Search through the tags
+        <Checkbox
+          name="tags"
+          type="checkbox"
+          checked={searchFields.tags}
+          onChange={e => setSearchFields({ ...searchFields, tags: e.target.checked })} />
+      </label>
+      <br />
+    </div>
     <div className='songsListContainer'>
       {filteredSongs.length > 0 ? filteredSongs.map(song =>
         <SongCard
