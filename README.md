@@ -1,9 +1,13 @@
 # Archimidi-v2
 
-Archimidi is my final project for Ironhacks web development bootcamp. Originally created with fellow student Ismael Lo, I've now created a different branch to add
-new features and styling.
+The general concept behind Archimidi was to create a simple fullstack, MERN MIDI database website, where users can upload, favourite, download and preview midi files.
 
-The general idea was to create a simple fullstack, MERN midi database website, where users can upload, like, download and preview midi files.
+For some context, MIDI is defined as "a technical standard that describes a communications protocol, digital interface, and electrical connectors that connect a wide variety of electronic musical instruments, computers, and related audio devices for playing, editing, and recording music."
+
+People can use MIDI clips to do fan covers of their favourite songs, swapping out instruments freely.
+
+Archimidi is the final project for Ironhacks web development bootcamp. Originally created with fellow student Ismael Lo, I've now created a different branch to add
+new features and styling.
 
 To run this in your development environment:
 
