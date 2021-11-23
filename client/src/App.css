@@ -21,7 +21,7 @@ input {
 .App {
   text-align: center;
   /* background: linear-gradient(#8e8e8e, #cbcbcb); */
-  background-color: rgb(40, 39, 39);
+  background-color: rgb(31, 31, 31);
   min-height: 100vh;
   font-size: 18px;
 
@@ -55,7 +55,7 @@ input {
 }
 
 .navBar a:hover {
-  color: #9575e1;
+  color: #648fff;
 }
 
 .searchBar {
@@ -64,11 +64,12 @@ input {
   flex-grow: 2;
   display: flex;
   margin-top: 0em;
+  
   /* align-items: space-between;S */
 }
 
 .searchBar input {
-  min-width: 250px;
+  min-width: 200px;
   width: 100%;
   flex-grow: 2;
   padding: 9px 10px 9px 32px;
@@ -77,7 +78,8 @@ input {
   font-size: 1em;
   margin: 0px;
   outline: none;
-  background: #ededed;
+  background: #c6c6c6;
+  border-radius:3px;
   /* padding: 0px;
   margin: 0px;
   border-left: 0px;
@@ -85,6 +87,7 @@ input {
 }
 .searchBar input:focus{
   background: white;
+  min-width: 300px;
 }
 .searchBar button {
   border: 0px;
@@ -134,7 +137,7 @@ input {
   border: solid black 0.5px;
   margin-top: 100px;
   border-radius: 10px;
-  background-color: aliceblue;
+  background-color: rgb(227, 227, 227);
   padding: 50px;
   
 
@@ -186,7 +189,7 @@ input[type="text"]:focus,
 input[type="password"]:focus {
   /* width: 200px; */
   background-color: #fff;
-  border: solid 1px #dc267f;
+ 
 }
 
 input[type="file"] {
@@ -213,7 +216,9 @@ input[type="file"] {
   justify-content: center;
   flex-wrap: wrap;
   padding-top: 0px;
-  margin: 0px
+  margin: 0px;
+  min-height: 50px;
+  
 }
 
 .tagsBox > p {
@@ -225,7 +230,6 @@ input[type="file"] {
   margin-right: 0.1em;
   background-color: #648fff;
   color: white;
-  margin-top: 0.3em;
   margin-bottom: 0.3em;
 }
 
@@ -251,13 +255,14 @@ h4 {
 .songCard{
   font-size: 10x;
   border: none;
-  margin: 5em;
+  margin: 3em;
   background: rgb(232, 232, 232);
-  min-width: 250px;
-  max-width: auto;
+  min-width: 300px;
+  max-width: 300px;
   max-height: auto;
-  min-height: 250px;
+  min-height: 300px;
   border-radius: 7px;
+  border:solid 1px black;
   /* box-shadow: 2px 2px 4px rgb(152, 152, 152), -1px -1px 5px */
  
   
@@ -272,11 +277,12 @@ h4 {
   flex-wrap: wrap;
 
 
+
 }
 .songCard:hover{
 
   
-  box-shadow:  2px 2px 3px #3720ff, -3px -3px 5px;
+  box-shadow:  2px 2px 3px #648fff, -3px -3px 5px;
     transition: 0.3s all ease-in-out;
 
 
@@ -316,8 +322,8 @@ h4 {
 
 .cardTop{
   text-align: center;
-  background: linear-gradient(#c2b1ff, #d0d0d0);
-  margin-bottom: 5px;
+  background: linear-gradient(#648fff, #d0d0d0);
+  /* margin-bottom: 5px; */
   border-radius: 3px;
   width:auto;
   height:auto;
@@ -328,16 +334,28 @@ h4 {
 }
 
 
-.customButton{
+#heartIcon{
 
-  padding-top: 20px;
-  min-width: 20px;
+  padding-bottom: 3px!important;
+
+ 
+}
+
+.likeAndDownloadContainer{
+
+  padding-top: 45%;
+  
+  margin-top: auto;
+  padding-right:60%;
+
+
 }
 
 .customButton:Hover{
 
-  color:#4f2bd5;
+  color:#648fff;
   transition: 0.2s all ease-in-out;
+  cursor:pointer;
 }
 
 .Input{
@@ -350,7 +368,7 @@ h4 {
   border:0.5px solid black;
   padding: 20px;
   border-radius: 5px;
-  background-color: aliceblue;
+  background-color: rgb(227, 227, 227);
 }
 
 midi-player{
@@ -366,10 +384,25 @@ midi-player{
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  margin:none;
+  padding: none;
   text-align: start;
-  border: 2px solid black;
-  padding: 20px;
-  background-color: aliceblue;
+  background-color: rgb(227, 227, 227);
   border-radius: 10px;
+ 
 
 }
+
+
+.accordionContainer{
+  height:7em; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position:sticky;
+  margin-right: 1450px;
+
+}
+
+
+
