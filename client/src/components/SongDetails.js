@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import SongCard from './SongCard';
+import Button from '@mui/material/Button';
 
 export default function SongDetails(props) {
     const [song, setSong] = useState(null);
@@ -82,15 +83,15 @@ export default function SongDetails(props) {
                     />
                     <div >
                         {(currentUserId === song.createdBy) &&
-                            <button onClick={() => deleteSong(song._id)}>
+                            <Button variant='contained' onClick={() => deleteSong(song._id)}>
                                 Delete {song.title}
-                            </button>}
+                            </Button>}
 
                         {(currentUserId === song.createdBy) &&
                             <Link to={`/songs/edit/${song._id}`}>
-                                <button>
+                                <Button variant='contained'>
                                     Edit {song.title}
-                                </button>
+                                </Button>
                             </Link>
                         }
                     </div>

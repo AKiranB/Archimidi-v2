@@ -21,7 +21,7 @@ input {
 .App {
   text-align: center;
   /* background: linear-gradient(#8e8e8e, #cbcbcb); */
-  background-color: rgb(255, 253, 253);
+  background-color: rgb(40, 39, 39);
   min-height: 100vh;
   font-size: 18px;
 
@@ -133,8 +133,8 @@ input {
   min-height: 350px;
   border: solid black 0.5px;
   margin-top: 100px;
-  border-radius: 5px;
-  background-color: rgb(247, 247, 247);
+  border-radius: 10px;
+  background-color: aliceblue;
   padding: 50px;
   
 
@@ -253,12 +253,12 @@ h4 {
   border: none;
   margin: 5em;
   background: rgb(232, 232, 232);
-  min-width: 220px;
+  min-width: 250px;
   max-width: auto;
   max-height: auto;
-  min-height: 220px;
+  min-height: 250px;
   border-radius: 7px;
-  box-shadow: 2px 2px 4px rgb(152, 152, 152), -1px -1px 5px
+  /* box-shadow: 2px 2px 4px rgb(152, 152, 152), -1px -1px 5px */
  
   
 }
@@ -276,7 +276,7 @@ h4 {
 .songCard:hover{
 
   
-  box-shadow:  2px 2px 3px #434343, -3px -3px 5px;
+  box-shadow:  2px 2px 3px #3720ff, -3px -3px 5px;
     transition: 0.3s all ease-in-out;
 
 
@@ -350,6 +350,7 @@ h4 {
   border:0.5px solid black;
   padding: 20px;
   border-radius: 5px;
+  background-color: aliceblue;
 }
 
 midi-player{
@@ -359,3 +360,16 @@ midi-player{
   border-radius: 5px;
 }
 
+
+.searchTickBoxesContainer{
+
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  text-align: start;
+  border: 2px solid black;
+  padding: 20px;
+  background-color: aliceblue;
+  border-radius: 10px;
+
+}
