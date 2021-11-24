@@ -111,7 +111,7 @@ function SongsList(props) {
           <Typography>Search by</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography component={'span'}>
             {searchCheckBoxes}
           </Typography>
         </AccordionDetails>
