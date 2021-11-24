@@ -68,7 +68,7 @@ export default function SongDetails(props) {
         <div className='detailsContainer'>
             {(currentUserId === '' && (
                 <Link to='/login'>
-                    <div style={{ color: 'red' }}>
+                    <div>
                         Log in to download and like this MIDI song
                     </div>
                 </Link>

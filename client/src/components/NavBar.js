@@ -2,6 +2,7 @@ import { useLocation, Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import service from '../api/service';
 import { Input } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function NavBar(props) {
 
@@ -31,7 +32,7 @@ export default function NavBar(props) {
         onChange={e => setSearch(e.target.value)}
         placeholder='Type your search here'
       />
-      {path !== '/' && <button onClick={handleSearch}> Search  </button>}
+      {path !== '/' && <button onClick={handleSearch}> <SearchIcon /></button>}
     </form>
 
   return (

@@ -21,9 +21,11 @@ input {
 .App {
   text-align: center;
   /* background: linear-gradient(#8e8e8e, #cbcbcb); */
-  background-color: rgb(31, 31, 31);
+  background-color: rgb(40, 40, 40);
+  background-image: url('images/Curve\ Line.svg');
   min-height: 100vh;
   font-size: 18px;
+  background-repeat: repeat-y;
 
 }
 
@@ -37,6 +39,9 @@ input {
   text-decoration: none;
   color: pink;
   flex-wrap: wrap;
+  position: sticky;
+   top: 0;
+   z-index: 100;
 }
 
 .navBar a {
@@ -79,7 +84,7 @@ input {
   margin: 0px;
   outline: none;
   background: #c6c6c6;
-  border-radius:3px;
+  /* border-radius:3px; */
   /* padding: 0px;
   margin: 0px;
   border-left: 0px;
@@ -365,15 +370,16 @@ h4 {
 
 .detailsContainer{
 
-  border:0.5px solid black;
+  border:0.5px solid rgb(126, 126, 126);
   padding: 20px;
   border-radius: 5px;
-  background-color: rgb(227, 227, 227);
+  background-color: rgb(85, 85, 85);
+  opacity: 90%;
+  
 }
 
 midi-player{
 
-  color: rgb(43, 0, 255);
   margin-bottom: 50px;
   border-radius: 5px;
 }
@@ -387,7 +393,7 @@ midi-player{
   margin:none;
   padding: none;
   text-align: start;
-  background-color: rgb(227, 227, 227);
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
  
 
@@ -395,14 +401,30 @@ midi-player{
 
 
 .accordionContainer{
-  height:7em; 
+  max-height:10em; 
+  /* margin-bottom: 200px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  position:sticky;
+  justify-content: space-between; */
+  
   margin-right: 1450px;
 
 }
 
 
+.searchBar > button {
 
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 10;
+  border-top-right-radius: 10;
+  height:40px;
+  margin-bottom: 1px;
+}
+
+
+.searchBar > button:hover {
+  background-color: #648fff;
+  transition: 0.3s all ease-in-out;
+
+}
