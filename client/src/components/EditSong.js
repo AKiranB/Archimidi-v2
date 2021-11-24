@@ -2,6 +2,9 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import service from '../api/service'
+import Button from '@mui/material/Button';
+
+import TextField from '@mui/material/TextField';
 
 export default function EditSong(props) {
 
@@ -32,23 +35,26 @@ export default function EditSong(props) {
         <div className='secondaryContainer'>
             <h3>Edit song</h3>
             <form onSubmit={handleSubmit} className='baseForm'>
-                <label htmlFor="title">
-                    Title:
-                </label>
-                <input
+
+                <TextField
                     type="text"
                     name="title"
                     value={title}
                     onChange={e => setTitle(e.target.value)}
+                    className='Input'
+                    label="Title" variant="outlined"
+
                 />
-                <label htmlFor="author">Author: </label>
-                <input
+
+                <TextField
                     type="text"
                     name="author"
                     value={author}
                     onChange={e => setAuthor(e.target.value)}
+                    className='Input'
+                    label="Author" variant="outlined"
                 />
-                <button type="submit">Update this project</button>
+                <Button variant='contained' type="submit">Update this project</Button>
             </form>
 
         </div>

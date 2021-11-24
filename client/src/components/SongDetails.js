@@ -16,13 +16,11 @@ export default function SongDetails(props) {
 
     const deleteSong = (id) => {
         try {
-            const response = service
-                .deleteSong(id)
+            service.deleteSong(id)
             history.push('/')
         } catch (err) {
             return console.log(err)
         }
-
     }
 
 
@@ -67,8 +65,8 @@ export default function SongDetails(props) {
     return (
         <div className='detailsContainer'>
             {(currentUserId === '' && (
-                <Link to='/login'>
-                    <div style={{ color: 'red' }}>
+                <Link to='/login' style={{}}>
+                    <div>
                         Log in to download and like this MIDI song
                     </div>
                 </Link>
@@ -84,13 +82,13 @@ export default function SongDetails(props) {
                     <div >
                         {(currentUserId === song.createdBy) &&
                             <Button variant='contained' onClick={() => deleteSong(song._id)}>
-                                Delete {song.title}
+                                Delete "{song.title}"
                             </Button>}
 
                         {(currentUserId === song.createdBy) &&
                             <Link to={`/songs/edit/${song._id}`}>
-                                <Button variant='contained'>
-                                    Edit {song.title}
+                                <Button style={{ marginLeft: 30 }} variant='contained'>
+                                    Edit "{song.title}"
                                 </Button>
                             </Link>
                         }
