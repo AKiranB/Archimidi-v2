@@ -2,9 +2,6 @@
   font-family: 'Quicksand', sans-serif !important;
 }
 @media (max-width: 1080px) {
-  .rightNav {
-    width: 100%;
-  }
   .searchBar {
     margin-right: 1em;
   }
@@ -20,7 +17,6 @@ input {
 
 .App {
   text-align: center;
-  /* background: linear-gradient(#8e8e8e, #cbcbcb); */
   background-color: rgb(40, 40, 40);
   background-image: url('images/Curve\ Line.svg');
   min-height: 100vh;
@@ -37,15 +33,13 @@ input {
   background-color: #131313;
   border: 1px black solid;
   text-decoration: none;
-  color: pink;
-  flex-wrap: wrap;
   position: sticky;
    top: 0;
    z-index: 100;
+   
 }
 
 .navBar a {
-  /* background-color: limegreen; */
   text-decoration: none;
   padding-left: 1em;
   padding-right: 1em;
@@ -53,46 +47,50 @@ input {
   color: #ffffff;
 }
 
-.navBar p {
-  text-decoration: none;
-  padding-left: 9px;
-  padding-right: 9px;
+.navRight{
+
+
+ 
+  padding-left:7%;
+  
+  
+ 
+  
 }
+
+#logo{
+  
+padding-right: 30px;
+
+}
+
 
 .navBar a:hover {
   color: #648fff;
 }
 
 .searchBar {
-  /* background-color: magenta; */
-  /* height: 2em; */
-  flex-grow: 2;
   display: flex;
   margin-top: 0em;
-  
-  /* align-items: space-between;S */
+  width:20%;
+  margin-right: 5%;
 }
 
 .searchBar input {
-  min-width: 200px;
-  width: 100%;
+  min-width: 10px;
+  max-width: auto; 
   flex-grow: 2;
   padding: 9px 10px 9px 32px;
-  /* box-sizing: border-box; */
   border: 0px;
   font-size: 1em;
   margin: 0px;
   outline: none;
   background: #c6c6c6;
-  /* border-radius:3px; */
-  /* padding: 0px;
-  margin: 0px;
-  border-left: 0px;
-  padding-left: 0px;  */
+ 
 }
 .searchBar input:focus{
   background: white;
-  min-width: 300px;
+  min-width: 250px;
 }
 .searchBar button {
   border: 0px;
@@ -102,28 +100,16 @@ input {
   padding-right: 1.2em;
 }
 
-.leftNav {
-  /* background-color: magenta; */
-  /* background-color: lime; */
-  height: 3em;
-  flex-grow: 2;
-  display: flex;
-  margin: none;
-  padding: none;
-  border: none;
-  align-items: center;
-  justify-content: space-between;
+#logo{
+  
+  
+
+
 }
 
-.rightNav {
-  height: 3em;
-  /* background-color: mediumaquamarine; */
-  min-width: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  /* s-color: magenta; */
-}
+
+
+
 
 .mainContainer {
   margin-top: 1em;
@@ -176,33 +162,11 @@ input {
 
 }
 
-
-form input[type="text"],
-form input[type="password"] {
-  outline: none;
-  background-color: #ededed;
-  border: solid 1px #ccc;
-  padding: 9px 10px 9px 32px;
-  /* width: 55px; */
-  
-  -webkit-border-radius: 10em;
-  -moz-border-radius: 10em;
-  border-radius: §px;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-  /* width: 200px; */
-  background-color: #fff;
- 
-}
-
 input[type="file"] {
   display: none;
 }
 
 .fileUpload {
-  /* background: peachpuff; */
   padding: 9px 10px 9px 10px;
   margin: 1em;
   background-color: #bcbcc1;
@@ -268,7 +232,6 @@ h4 {
   min-height: 300px;
   border-radius: 7px;
   border:solid 1px black;
-  /* box-shadow: 2px 2px 4px rgb(152, 152, 152), -1px -1px 5px */
  
   
 }
@@ -307,7 +270,7 @@ h4 {
 
 .Input{
 
-  min-width: 320px !important ;
+  min-width: 300px !important ;
 
 
 }
@@ -334,8 +297,6 @@ h4 {
   height:auto;
   padding-top:5px;
   border-bottom: 1px solid grey;
-  
- 
 }
 
 
@@ -378,7 +339,7 @@ h4 {
   
 }
 
-/* comment */
+
 
 midi-player{
 
@@ -428,5 +389,5 @@ midi-player{
 .searchBar > button:hover {
   background-color: #648fff;
   transition: 0.3s all ease-in-out;
-
 }
+

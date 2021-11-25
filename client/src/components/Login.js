@@ -13,7 +13,7 @@ export default function Login(props) {
         e.preventDefault();
         service.login(username, password)
             .then(response => {
-                console.log('handlesubmit service.login response:', response);
+
                 if (response.message) {
                     setMessage(response.message)
                     setUsername('')
