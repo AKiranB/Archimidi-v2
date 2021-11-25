@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 
 export default function MySongs(props) {
 
+    const userId = props.user._id || ''
+
     const [allSongs, setAllSongs] = useState([]);
 
     const getMySongs = async () => {
@@ -17,23 +19,27 @@ export default function MySongs(props) {
     }, [])
 
     const filteredSongs = allSongs.filter(song => {
-        return song.createdBy === props.user._id
+        return song.createdBy === userId
     });
 
     return (
-        <>
-            <h3>My Songs</h3>
-            <div className='songsListContainer'>
-                {filteredSongs.length >= 1 ? (
-                    <>
-                        {filteredSongs.map(song => <SongCard key={song._id} {...song} />)}
-                    </>
-                ) : (
-                    <>
-                        <h1>You haven't uploaded any songs yet</h1>
-                    </>
-                )}
-            </div>
-        </>
+        <div>
+            {userId !== undefined ?
+                (<>
+
+                    <div className='songsListContainer'>
+                        {filteredSongs.length >= 1 ? (
+                            <>
+                                {filteredSongs.map(song => <SongCard key={song._id} {...song} />)}
+                            </>
+                        ) : (
+                            <>
+                                <h1>You haven't uploaded any songs yet</h1>
+                            </>
+                        )}
+                    </div>
+                </>
+                ) : (null)}
+        </div>
     )
 }
