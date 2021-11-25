@@ -27,7 +27,7 @@ input {
 
 .navBar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-direction: row;
   background-color: #131313;
@@ -41,26 +41,25 @@ input {
 
 .navBar a {
   text-decoration: none;
-  padding-left: 1em;
-  padding-right: 1em;
+
   font-size: 1.3em;
   color: #ffffff;
 }
 
 .navRight{
 
+  min-width: fit-content;
+  max-width: fit-content;
+  margin-right: 10%;
+  position: sticky;
+ 
 
- 
-  padding-left:7%;
-  
-  
- 
   
 }
 
 #logo{
-  
-padding-right: 30px;
+ 
+border:solid 0.5px rgb(16, 100, 174);
 
 }
 
@@ -72,13 +71,14 @@ padding-right: 30px;
 .searchBar {
   display: flex;
   margin-top: 0em;
-  width:20%;
+ 
   margin-right: 5%;
 }
 
 .searchBar input {
-  min-width: 10px;
-  max-width: auto; 
+  
+  
+ width: 250px;
   flex-grow: 2;
   padding: 9px 10px 9px 32px;
   border: 0px;
@@ -86,25 +86,19 @@ padding-right: 30px;
   margin: 0px;
   outline: none;
   background: #c6c6c6;
+  
  
 }
-.searchBar input:focus{
-  background: white;
-  min-width: 250px;
-}
+
+.searchBar input:hover {
+  background-color: white;
+ }
+
 .searchBar button {
   border: 0px;
   font-size: 1em;
   outline: 0;
-  padding-left: 1.2em;
-  padding-right: 1.2em;
-}
-
-#logo{
-  
-  
-
-
+ 
 }
 
 
@@ -265,7 +259,7 @@ h4 {
 .piano-roll-visualizer{
 
   width:1000px;
-  background-color: #555555;
+  background-color: rgb(227, 227, 227);
 }
 
 .Input{
@@ -334,7 +328,8 @@ h4 {
   border:0.5px solid rgb(126, 126, 126);
   padding: 20px;
   border-radius: 5px;
-  background-color: rgb(85, 85, 85);
+  background-color:rgb(227, 227, 227);;
+
 
   
 }
@@ -370,7 +365,7 @@ midi-player{
   align-items: center;
   justify-content: space-between; */
   
-  margin-right: 1450px;
+  margin-left: 60%;
 
 }
 

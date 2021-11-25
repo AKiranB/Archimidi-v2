@@ -7,6 +7,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import React from 'react'
 
+
 import { Box } from "@mui/system";
 
 export default function NavBar(props) {
@@ -16,10 +17,6 @@ export default function NavBar(props) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-
-
-
 
   const path = useLocation().pathname
   const history = useHistory()
@@ -54,12 +51,12 @@ export default function NavBar(props) {
   return (
     <Box className='navBar' >
 
+
       {props.user ?
 
         (
           <div className='navRight'>
             <Tabs
-              className='navRight'
               value={value}
               onChange={handleChange}
               style={{ width: 700 }}
@@ -68,6 +65,8 @@ export default function NavBar(props) {
               <Tab to="/" label='Logout' onClick={() => handleLogout()} />
               <Tab component={Link} to='/songs/add' label='Upload Song' />
               <Tab component={Link} to='/mysongs' label='My Songs' />
+
+
 
             </Tabs>
           </div>
@@ -78,11 +77,14 @@ export default function NavBar(props) {
               onChange={handleChange}
             >
               <Tab label='Archimidi' id='logo' component={Link} to='/' />
-              <Tab component={Link} label='Sign up' to='/signup' />
               <Tab label='login' component={Link} to='/login' />
+              <Tab component={Link} label='Sign up' to='/signup' />
+
             </Tabs>
           </div>)}
+
       {searchBar}
+
     </Box>
 
   )
