@@ -71,8 +71,9 @@ border:solid 0.5px rgb(16, 100, 174);
 .searchBar {
   display: flex;
   margin-top: 0em;
+  margin-right: 10%;
  
-  margin-right: 5%;
+ 
 }
 
 .searchBar input {
@@ -360,12 +361,14 @@ midi-player{
 
 .accordionContainer{
   max-height:10em; 
+  font-size: 10px;
   /* margin-bottom: 200px;
   display: flex;
   align-items: center;
   justify-content: space-between; */
   
-  margin-left: 60%;
+  margin-left: 55%;
+  text-align: left;
 
 }
 

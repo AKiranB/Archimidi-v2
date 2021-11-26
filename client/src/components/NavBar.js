@@ -18,7 +18,7 @@ export default function NavBar(props) {
     setValue(newValue);
   };
 
-  const path = useLocation().pathname
+
   const history = useHistory()
   const { search, setSearch } = props;
 

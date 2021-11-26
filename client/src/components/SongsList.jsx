@@ -55,9 +55,12 @@ function SongsList(props) {
         songs = sortedArray.sort(dynamicSort('-likes'))
         return setSortedSongs(songs)
       } else {
-        songs = sortedArray.sort
+        songs = sortedArray.sort(function (a, b) {
+          return a.title - b.title || a.likes - b.likes;
+        });
+        return setSortedSongs(songs)
       }
-      return setSortedSongs(array)
+
     }
     sort(allSongs)
   }, [sortFields, allSongs])
