@@ -3,18 +3,20 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import service from '../api/service';
 import SongCard from "./SongCard";
-// import { Checkbox } from "@mui/material";
-// import Accordion from '@mui/material/Accordion';
-// import AccordionSummary from '@mui/material/AccordionSummary';
-// import AccordionDetails from '@mui/material/AccordionDetails';
-// import Typography from '@mui/material/Typography';
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Checkbox } from "@mui/material";
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function SongsList(props) {
 
   const [allSongs, setAllSongs] = useState([]);
+  const [sortedSongs, setSortedSongs] = useState([])
   const { search, } = props;
   const [searchFields, setSearchFields] = useState({ title: true, author: true, tags: false })
+  const [sortFields, setSort] = useState({ alphabetic: false, likes: false })
 
   const getAllSongs = async () => {
     const result = await service.findAllSongs();
@@ -27,6 +29,44 @@ function SongsList(props) {
 
   let words = search.split(' ') || []
 
+  function dynamicSort(property) {
+    var sortOrder = 1;
+    if (property[0] === "-") {
+      sortOrder = -1;
+      property = property.substr(1);
+    }
+    return function (a, b) {
+      var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+      return result * sortOrder;
+    }
+  }
+
+  useEffect(() => {
+    function sort(array) {
+      const sortedArray = [...array]
+      let songs
+      if (!sortFields.alphabetic && !sortFields.likes) {
+        return setSortedSongs(array)
+      }
+      if (sortFields.alphabetic) {
+        songs = sortedArray.sort(dynamicSort('title'))
+        return setSortedSongs(songs)
+      } else if (sortFields.likes) {
+        songs = sortedArray.sort(dynamicSort('-likes'))
+        return setSortedSongs(songs)
+      } else {
+        songs = sortedArray.sort(function (a, b) {
+          return a.title - b.title || a.likes - b.likes;
+        });
+        return setSortedSongs(songs)
+      }
+
+    }
+    sort(allSongs)
+  }, [sortFields, allSongs])
+
+
+
   function searchCheck(search, word) {
     for (let i = 0; i <= word.length; i++) {
       if (word.substring(i, i + search.length).toLowerCase() === search.toLowerCase()) {
@@ -36,7 +76,7 @@ function SongsList(props) {
     return false
   }
 
-  const filteredSongs = allSongs.filter(function (song) {
+  const filteredSongs = sortedSongs.filter(function (song) {
     const title = song.title.split(' ')
     const author = song.author.split(' ')
     const tags = [...song.tags]
@@ -69,39 +109,62 @@ function SongsList(props) {
   });
 
 
-  // const searchCheckBoxes = (<div className='searchTickBoxesContainer'>
 
-  //   <label>
-  //     Title
-  //     <Checkbox
-  //       name="title"
-  //       type="checkbox"
-  //       checked={searchFields.title}
-  //       onChange={e => setSearchFields({ ...searchFields, title: e.target.checked })} />
-  //   </label>
-  //   <br />
-  //   <label>
-  //     Author
-  //     <Checkbox
-  //       name="author"
-  //       type="checkbox"
-  //       checked={searchFields.author}
-  //       onChange={e => setSearchFields({ ...searchFields, author: e.target.checked })} />
-  //   </label>
-  //   <br />
-  //   <label>
-  //     Tags
-  //     <Checkbox
-  //       name="tags"
-  //       type="checkbox"
-  //       checked={searchFields.tags}
-  //       onChange={e => setSearchFields({ ...searchFields, tags: e.target.checked })} />
-  //   </label>
-  //   <br />
-  // </div>)
+
+  const searchCheckBoxes = (<div className='searchTickBoxesContainer'>
+    <label>
+      Title
+      <Checkbox
+        name=""
+        type="checkbox"
+        checked={searchFields.title}
+        onChange={e => setSearchFields({ ...searchFields, title: e.target.checked })} />
+    </label>
+    <br />
+    <label>
+      Author
+      <Checkbox
+        name="author"
+        type="checkbox"
+        checked={searchFields.author}
+        onChange={e => setSearchFields({ ...searchFields, author: e.target.checked })} />
+    </label>
+    <br />
+    <label>
+      Tags
+      <Checkbox
+        name="tags"
+        type="checkbox"
+        checked={searchFields.tags}
+        onChange={e => setSearchFields({ ...searchFields, tags: e.target.checked })} />
+    </label>
+    <br />
+  </div>)
+
+  const sortCheckBoxes = (<div className='sortTickBoxesContainer'>
+    <label>
+      A-Z
+      <Checkbox
+        name="A-Z"
+        type="checkbox"
+        checked={sortFields.alphabetic}
+        onChange={e => setSort({ ...sortFields, alphabetic: e.target.checked })} />
+    </label>
+    <br />
+    <label>
+      Most favourited
+      <Checkbox
+        name="likes"
+        type="checkbox"
+        checked={sortFields.likes}
+        onChange={e => setSort({ ...sortFields, likes: e.target.checked })} />
+    </label>
+
+  </div>)
 
   return (<>
-    {/* <div className='accordionContainer'>
+
+    <div className='accordionContainer'>
       <Accordion color='black'>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -116,7 +179,27 @@ function SongsList(props) {
           </Typography>
         </AccordionDetails>
       </Accordion>
-    </div> */}
+
+
+
+
+      <Accordion color='black'>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>Sort by</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography component={'span'}>
+            {sortCheckBoxes}
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+    </div>
+
+
 
 
     <div className='songsListContainer'>
