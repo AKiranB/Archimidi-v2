@@ -13,4 +13,7 @@ To run this in your development environment:
 
 Fork and Clone this repo, run npm install in both client and root folders.
 Add environment variables to the .env file.
-Start server and client --> runs on localhost:3000
+Start server and client --> runs on localhost:3000!
+
+[Screenshot 2021-12-08 at 10 15 49](https://user-images.githubusercontent.com/86478874/145181663-2ddec34f-6ccb-48cf-8f8c-fcfab393813b.png)
+
