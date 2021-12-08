@@ -1,6 +1,7 @@
 # Archimidi-v2
 
-The general concept behind Archimidi was to create a simple fullstack, MERN MIDI database website, where users can upload, favourite, download and preview midi files.
+<img src='https://user-images.githubusercontent.com/86478874/145181999-2fbce6b2-d736-4cff-9d79-961066006294.png'></img>
+The general concept behind Archimidi was to create a fullstack, MERN MIDI database website, where users can upload, favourite, download and preview midi files.
 
 For some context, MIDI is defined as "a technical standard that describes a communications protocol, digital interface, and electrical connectors that connect a wide variety of electronic musical instruments, computers, and related audio devices for playing, editing, and recording music."
 
@@ -11,9 +12,8 @@ new features and styling.
 
 To run this in your development environment:
 
-Fork and Clone this repo, run npm install in both client and root folders.
-Add environment variables to the .env file.
-Start server and client --> runs on localhost:3000!
+Clone this repo, run npm i in both client and root folders.
+Add your environment variables.
+npm start server and client --> runs on localhost:3000!
 
-[Screenshot 2021-12-08 at 10 15 49](https://user-images.githubusercontent.com/86478874/145181663-2ddec34f-6ccb-48cf-8f8c-fcfab393813b.png)
 
