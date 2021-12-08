@@ -15,11 +15,11 @@ new features and styling.
 
 Built with:
 
-React
-MongoDB
-Express
-Material UI
-Axios
+React,
+MongoDB,
+Express,
+Material UI,
+Axios,
 html-midi-player(https://www.webcomponents.org/element/html-midi-player)
 
 
