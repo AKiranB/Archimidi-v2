@@ -66,8 +66,6 @@ export default function NavBar(props) {
               <Tab component={Link} to='/songs/add' label='Upload Song' />
               <Tab component={Link} to='/mysongs' label='My Songs' />
 
-
-
             </Tabs>
           </div>
         ) : (
