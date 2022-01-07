@@ -1,4 +1,4 @@
-import { useLocation, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import service from '../api/service';
 import { Input } from "@mui/material";
@@ -65,9 +65,6 @@ export default function NavBar(props) {
               <Tab to="/" label='Logout' onClick={() => handleLogout()} />
               <Tab component={Link} to='/songs/add' label='Upload Song' />
               <Tab component={Link} to='/mysongs' label='My Songs' />
-
-
-
             </Tabs>
           </div>
         ) : (

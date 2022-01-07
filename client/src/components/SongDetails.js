@@ -67,7 +67,7 @@ export default function SongDetails(props) {
             {(currentUserId === '' && (
                 <Link to='/login' style={{}}>
                     <div>
-                        Log in to add this MIDI song to your favourites
+                        <u>Log in to add this MIDI song to your favourites</u>
                     </div>
                 </Link>
             ))}

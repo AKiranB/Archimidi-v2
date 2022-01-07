@@ -3,6 +3,7 @@ import { useState } from 'react'
 import service from '../api/service';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { Badge } from '@mui/material';
 export default function Login(props) {
 
     const [username, setUsername] = useState('');
@@ -27,13 +28,14 @@ export default function Login(props) {
                 console.log(err)
             })
 
-    }
+    };
     return (
         <div className='secondaryContainer'>
             <h3>Log in</h3>
             <form onSubmit={handleSubmit} className='baseForm'>
 
                 <TextField
+                    required
                     type="text"
                     name="username"
                     value={username}
@@ -44,6 +46,7 @@ export default function Login(props) {
                     style={{ color: 'grey' }}
                 />
                 <TextField
+                    required
                     type="password"
                     name="password"
                     value={password}
@@ -56,6 +59,7 @@ export default function Login(props) {
                 {message && (
                     <h3>{message}</h3>
                 )}
+                <p>Don't have an account? <a href='/signup'>- <u>Sign Up</u></a></p>
             </form>
         </div>
     )

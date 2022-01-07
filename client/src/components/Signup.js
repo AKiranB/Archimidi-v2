@@ -57,6 +57,7 @@ export default function Signup(props) {
                 {message && (
                     <h3>{message}</h3>
                 )}
+                <p>Already a user? <a href='/login'>- <u>Log In</u></a></p>
             </form>
         </div>
     )
