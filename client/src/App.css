@@ -17,7 +17,7 @@ input {
 
 .App {
   text-align: center;
-  background-color: rgb(40, 40, 40);
+  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgb(39, 39, 39) 54%, rgba(53,0,255,1) 100%);
   /* background-image: url('images/Curve\ Line.svg'); */
   min-height: 100vh;
   font-size: 18px;
@@ -97,9 +97,6 @@ border:solid 0.5px rgb(16, 100, 174);
 }
 
 
-
-
-
 .mainContainer {
   margin-top: 1em;
   display: flex;
@@ -116,11 +113,15 @@ border:solid 0.5px rgb(16, 100, 174);
   min-height: 350px;
   border: solid black 0.5px;
   margin-top: 100px;
-  border-radius: 10px;
-  background-color: rgb(227, 227, 227);
+  background-color: rgb(255, 255, 255);
   padding: 50px;
-  
 
+}
+
+
+.secondaryContainer a{
+
+  color:#000000
 }
 
 .baseForm {
@@ -192,7 +193,7 @@ input[type="file"] {
 }
 
 a {
-  color: black;
+  color: rgb(255, 255, 255);
   text-decoration: none;
 }
 
@@ -222,7 +223,6 @@ h4 {
   border-radius: 7px;
   border:solid 1px black;
  
-  
 }
 
 .songsListContainer{
@@ -232,8 +232,6 @@ h4 {
   align-items: center;
   flex-direction: row;
   flex-wrap: wrap;
-
-
 
 }
 .songCard:hover{
@@ -245,20 +243,20 @@ h4 {
 }
 
 
-.songCardDetails{
-
- background-color:black!;
-}
-
 .piano-roll-visualizer{
 
   width:1000px;
   background-color: rgb(227, 227, 227);
+  background: rgb(2,0,36);
+background: linear-gradient(90deg, rgb(115, 115, 197) 0%, rgb(132, 132, 216) 35%, rgba(0,212,255,1) 100%);
+border: 2px black solid;
+border-radius: 5px;
+  
 }
 
 .Input{
 
-  min-width: 300px !important ;
+  min-width: 100% !important ;
 
 
 }
@@ -310,6 +308,15 @@ h4 {
   color:#648fff;
   transition: 0.2s all ease-in-out;
   cursor:pointer;
+ 
+}
+
+.customButton{
+
+  color:#000000;
+  transition: 0.2s all ease-in-out;
+  cursor:pointer;
+ 
 }
 
 .Input{
@@ -319,13 +326,12 @@ h4 {
 
 .detailsContainer{
 
-  border:0.5px solid rgb(126, 126, 126);
   padding: 20px;
   border-radius: 5px;
-  background-color:rgb(227, 227, 227);;
+  background-color:rgb(35, 34, 39);;
+  background: rgb(2,0,36);
+background: linear-gradient(90deg, rgb(47, 47, 117) 0%, rgba(9,9,121,1) 35%, rgb(55, 0, 255) 100%);
 
-
-  
 }
 
 
@@ -334,6 +340,7 @@ midi-player{
 
   margin-bottom: 50px;
   border-radius: 5px;
+  
 }
 
 
