@@ -55,10 +55,6 @@ export default function SongCard({
             });
     };
 
-
-
-
-
     return (
         <div key={_id} className='songCard'>
             <Link className="Link"

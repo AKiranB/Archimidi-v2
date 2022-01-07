@@ -18,7 +18,7 @@ input {
 .App {
   text-align: center;
   background-color: rgb(40, 40, 40);
-  background-image: url('images/Curve\ Line.svg');
+  /* background-image: url('images/Curve\ Line.svg'); */
   min-height: 100vh;
   font-size: 18px;
   background-repeat: repeat-y;
@@ -41,7 +41,6 @@ input {
 
 .navBar a {
   text-decoration: none;
-
   font-size: 1.3em;
   color: #ffffff;
 }
@@ -50,11 +49,8 @@ input {
 
   min-width: fit-content;
   max-width: fit-content;
-  margin-right: 10%;
   position: sticky;
  
-
-  
 }
 
 #logo{
@@ -71,9 +67,7 @@ border:solid 0.5px rgb(16, 100, 174);
 .searchBar {
   display: flex;
   margin-top: 0em;
-  margin-right: 10%;
- 
- 
+  align-items: flex-end;
 }
 
 .searchBar input {
@@ -243,11 +237,10 @@ h4 {
 
 }
 .songCard:hover{
-
   
-  box-shadow:  2px 2px 3px #648fff, -3px -3px 5px;
+  box-shadow: rgba(63, 98, 235, 0.4) -5px 5px, rgba(63, 98, 235, 0.3) -10px 10px, rgba(63, 98, 235, 0.2) -15px 15px, rgba(63, 98, 235, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+  ;
     transition: 0.3s all ease-in-out;
-
 
 }
 
