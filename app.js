@@ -12,11 +12,6 @@ const DB_URL = process.env.MONGODB_URI
 app.use(express.static(path.join(__dirname, "/client/build")));
 require("./config")(app);
 
-
-
-
-
-
 app.use(
     session({
         secret: process.env.SESSION_SECRET,
@@ -28,9 +23,6 @@ app.use(
         })
     })
 )
-
-
-
 
 const allRoutes = require("./routes");
 app.use("/api", allRoutes);
@@ -44,11 +36,9 @@ app.use('/api', songRouter);
 const auth = require('./routes/auth');
 app.use('/api/auth', auth)
 
-
 app.use((req, res) => {
     res.sendFile(__dirname + "/client/build/index.html");
 });
-
 
 require("./error-handling")(app);
 

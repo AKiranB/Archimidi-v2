@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
-import React from 'react'
+import * as React from 'react';
+import { useState } from 'react';
+import axios from 'axios';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { Button, CardActionArea, CardActions, Chip } from '@mui/material';
 import DownloadIcon from '@mui/icons-material/Download';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import axios from 'axios';
-import { useState } from 'react'
-
-
-
-
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import { Link } from 'react-router-dom'
 
 export default function SongCard({
     title,
@@ -19,9 +19,7 @@ export default function SongCard({
     likes,
     user,
     likedUsers
-
 }) {
-
     const [song, setSong] = useState({
         title: title,
         _id: _id,
@@ -48,58 +46,40 @@ export default function SongCard({
     const decrementLike = () => {
         axios.put(`/api/unlike/${songId}`, { currentUserId })
             .then(response => {
-                setSong(response.data)
+                setSong(response.data);
             })
             .catch(err => {
-                throw new Error('Cannot update likes:', err)
+                throw new Error('Cannot update likes:', err);
             });
     };
 
     return (
-        <div key={_id} className='songCard'>
-            <Link className="Link"
-                to={`/songs/${_id}`}
-            >
-                <div className='cardTop'>
-                    <h3>{song.title}</h3>
-                    <h4>By {song.author}</h4>
-                </div>
-            </Link>
-            <div className='tagsBox'>
-                {tags && tags.map((tag, i) => <p key={i}>{tag}</p>)}
-            </div>
-            <div className='likeAndDownloadContainer'>
-                <a href={songUrl} download={`${song.title}_${song.author}.mid`}><DownloadIcon className='customButton' /></a>
-                {(currentUserId !== '' ? (
-                    <div>
-                        {song.likedUsers.includes(currentUserId) ? (
-                            <>
-                                <FavoriteIcon
-                                    id='heartIcon'
-                                    className='customButton'
-                                    onClick={() => decrementLike(songId)} />
-                                {song.likes}
-                            </>
-
-                        ) : (
-                            <>
-                                <FavoriteBorderIcon
-                                    id='heartIcon'
-                                    className='customButton'
-                                    onClick={() => incrementLike(songId)} />
-                                {song.likes}
-
-                            </>
-                        )}
-                    </div>) : (
-                    <>
-                        <FavoriteIcon id='heartIcon' className='customButton' />
+        <Card sx={{ width: 400, height: 150, overflow: 'hidden', margin: '16px', display: 'flex', flexDirection: 'column' }}>
+            <Link to={`/songs/${_id}`}>
+                <CardActionArea sx={{ flex: '1' }}>
+                    <CardContent>
+                        <Typography color={'black'} variant="h5" component="div">
+                            {song.title}
+                        </Typography>
+                        <Typography color={'black'} variant="h6" component="div">
+                            By {song.author}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            {tags && tags.map((tag, i) => <Chip style={{ height: '20px' }} key={i} label={tag} />)}
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+                <CardActions sx={{ paddingLeft: 1, paddingRight: 1, paddingTop: 0 }}>
+                    <a href={songUrl} download={`${song.title}_${song.author}.mid`}>
+                        <Button size="small" color="primary" startIcon={<DownloadIcon />}>
+                            Download
+                        </Button>
+                    </a>
+                    <Button size="small" color="primary" onClick={song.likedUsers.includes(currentUserId) ? decrementLike : incrementLike} startIcon={song.likedUsers.includes(currentUserId) ? <FavoriteIcon /> : <FavoriteBorderIcon />}>
                         {song.likes}
-                    </>
-
-                )
-                )}
-            </div>
-        </div>
-    )
+                    </Button>
+                </CardActions>
+            </Link>
+        </Card>
+    );
 }
